@@ -29,7 +29,7 @@ export default class ExercisesList extends Component {
 
     deleteExercise(id) {
         axios
-            .delete("http://localhost:5000/exercises/" + id)
+            .delete("http://localhost:3000/exercises/" + id)
             .then(res => console.log(res.data))
             .catch(err => console.error(err));
 
@@ -39,9 +39,17 @@ export default class ExercisesList extends Component {
     }
 
     render() {
-        const { exercises } = this.state;
+        let { exercises } = this.state;
+        console.log(exercises);
 
-        const list = exercises.map((i, idx) => {
+        exercises = exercises.sort((a, b) => {
+            const x = new Date(a.date);
+            const y = new Date(b.date);
+
+            return x - y;
+        });
+
+        const list = exercises.map(i => {
             return (
                 <Exercise
                     exercise={i}
