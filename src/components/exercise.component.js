@@ -12,7 +12,7 @@ export default function Exercise(props) {
             <td>{date.substring(0, 10)}</td>
             <td>
                 <Link to={"/edit/" + _id}>edit</Link> |{" "}
-                <a href='#' onClick={() => props.deleteExercise(_id)}>
+                <a href='/#' onClick={() => props.deleteExercise(_id)}>
                     delete
                 </a>
             </td>
